@@ -71,9 +71,6 @@ contains('Gum', items, function(bool){
   console.log(bool)
 })
 
-  // contains checks if an item is present inside of the given array/list.
-  // Pass true to the callback if it is, otherwise pass false.
-
 /* STRETCH PROBLEM */
 
 function removeDuplicates(array, cb) {
