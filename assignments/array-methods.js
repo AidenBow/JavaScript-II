@@ -116,9 +116,7 @@ console.log(shirtTotals)
 
 // ask for a bigger donation from those who donated little
 
-let smallDonations = [];
-
-smallDonations = runners.filter(business => business.donation < 20)
+let smallDonations = runners.filter(business => business.donation < 20)
 
 let smallDonationsEmail = [];
 

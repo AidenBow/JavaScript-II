@@ -1,7 +1,19 @@
 // ==== Challenge 1: Write your own closure ====
-// Write a simple closure of your own creation.  Keep it simple!
+let lunchBox = (name) => {
+  console.log('this is ' + name + 's lunchbox');
 
+  let friend = (friendName) => {
+    console.log(name + ' will let ' + friendName + ' have some of his almonds');
 
+    let dog = (dogName) => {
+      console.log(name + ' and ' + friendName + ' know not feed ' + dogName + ' any chocolate')
+    }
+    dog('Sadie')
+  }
+  friend('Jake')
+  }
+
+lunchBox('Aiden')
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
 
