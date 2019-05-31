@@ -56,28 +56,72 @@ const runners = [{"id":1,"first_name":"Charmain","last_name":"Seiler","email":"c
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs.  Combine both the first and last names into a new array called fullName. 
 let fullName = [];
+runners.forEach(function (item) {
+  fullName.push(item.first_name + ' ' + item.last_name);
+});
 console.log(fullName);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runner's first names converted to uppercase because the director BECAME DRUNK WITH POWER. Convert each first name into all caps and log the result
 let allCaps = [];
+
+allCaps = runners.map(item => item.first_name.toUpperCase());
 console.log(allCaps); 
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue.  Get a list of runners with large sized shirts so they can choose a different size. Return an array named largeShirts that contains information about the runners that have a shirt size of L and log the result
 let largeShirts = [];
+
+largeShirts = runners.filter(item => item.shirt_size == 'L')
 console.log(largeShirts);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations into a ticketPriceTotal array and log the result
 let ticketPriceTotal = [];
-console.log(ticketPriceTotal);
+
+ticketPriceTotal = runners.reduce((total, business)  => total + business.donation, 0)
+
+console.log('Total donations: $' + ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
-// Problem 1
+// They want to know what the average donation is to give a good reccomendation for next year!
 
-// Problem 2
+let donationAverage = 0;
 
-// Problem 3
+donationAverage = runners.reduce((total, business, index, array) => {
+  total += business.donation;
+  if (index === array.length - 1){
+    return total / index
+  }else{
+    return total
+  }
+},0)
+
+console.log('The average donation is: $' + donationAverage.toFixed(2))
+
+//They want to know how many of each sized tshirt they need to buy
+
+let shirtTotals = {
+  small: runners.filter(item => item.shirt_size == 'S').length,
+  medium: runners.filter(item => item.shirt_size == 'M').length,
+  large: runners.filter(item => item.shirt_size == 'L').length,
+  extraLarge: runners.filter(item => item.shirt_size == 'XL').length,
+  extraLarge2: runners.filter(item => item.shirt_size == '2XL').length,
+  extraLarge3: runners.filter(item => item.shirt_size == '3XL').length
+};
+
+console.log(shirtTotals)
+
+// ask for a bigger donation from those who donated little
+
+let smallDonations = runners.filter(business => business.donation < 20)
+
+let smallDonationsEmail = [];
+
+smallDonations.forEach(function (item) {
+  smallDonationsEmail.push(item.first_name + ' ' + item.last_name + ' only donated $' + item.donation + '! Email them now! ' + item.email);
+});
+
+console.log(smallDonationsEmail)
